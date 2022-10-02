@@ -4,12 +4,14 @@ import com.example.league_manager_backend.model.Team;
 import com.example.league_manager_backend.model.User;
 import com.example.league_manager_backend.repository.TeamRepository;
 import com.example.league_manager_backend.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -22,6 +24,8 @@ public class TeamController {
     @Autowired
     UserRepository userRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger("TeamController.class");
+
     @GetMapping({ "/user/{id}/team" })
     public ResponseEntity<Team> getTeamById(@PathVariable(value = "id") Long id) throws Exception {
 
@@ -29,6 +33,14 @@ public class TeamController {
         System.out.println("get team: " + team);
 
         return new ResponseEntity<>(team, HttpStatus.OK);
+    }
+
+    @GetMapping({ "/teams" })
+    public ResponseEntity<List<Team>> getAllTeams() throws Exception {
+
+        List<Team> allTeams = teamRepository.findAll();
+        logger.info("GET all teams: " + allTeams);
+        return new ResponseEntity<>(allTeams, HttpStatus.OK);
     }
 
     @PostMapping("/user/{userId}/team")
