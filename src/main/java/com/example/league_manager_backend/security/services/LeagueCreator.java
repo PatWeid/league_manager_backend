@@ -64,7 +64,6 @@ public class LeagueCreator {
         gameDay1.setNumber(1);
         gameDay1.setDate(dates.get(0));
 
-        Set<Team> teamSet = new HashSet<>();
         Set<Game> gameSet1 = new HashSet<>();
 
         Game game1 = new Game();
@@ -105,19 +104,116 @@ public class LeagueCreator {
 
         gameDay1.setGames(gameSet1);
 
-        gameRepository.save(game1);
-        gameRepository.save(game2);
-        gameRepository.save(game3);
-        gameRepository.save(game4);
-        gameRepository.save(game5);
+//        gameRepository.save(game1);
+//        gameRepository.save(game2);
+//        gameRepository.save(game3);
+//        gameRepository.save(game4);
+//        gameRepository.save(game5);
         gameDayRepository.save(gameDay1);
 
 
+        // Gameday2
+        GameDay gameDay2 = new GameDay();
+        gameDay2.setNumber(2);
+        gameDay2.setDate(dates.get(1));
 
-        System.out.println("Teams in first list: " + teams);
-        System.out.println("Teams in Map: " + randomMap);
-        System.out.println("GameDay1: " + gameDay1);
+        Set<Game> gameSet2 = new HashSet<>();
 
-        Set<Game> games = gameDayRepository.findByNumber(1).getGames();
+        Game game21 = new Game();
+        Set<Team> teamSet21 = new HashSet<>();
+        teamSet21.add(randomMap.get(10));
+        teamSet21.add(randomMap.get(1));
+        game21.setTeams(teamSet21);
+
+        Game game22 = new Game();
+        Set<Team> teamSet22 = new HashSet<>();
+        teamSet22.add(randomMap.get(2));
+        teamSet22.add(randomMap.get(9));
+        game22.setTeams(teamSet22);
+
+        Game game23 = new Game();
+        Set<Team> teamSet23 = new HashSet<>();
+        teamSet23.add(randomMap.get(3));
+        teamSet23.add(randomMap.get(8));
+        game23.setTeams(teamSet23);
+
+        Game game24= new Game();
+        Set<Team> teamSet24 = new HashSet<>();
+        teamSet24.add(randomMap.get(4));
+        teamSet24.add(randomMap.get(7));
+        game24.setTeams(teamSet24);
+
+        Game game25 = new Game();
+        Set<Team> teamSet25 = new HashSet<>();
+        teamSet25.add(randomMap.get(5));
+        teamSet25.add(randomMap.get(6));
+        game25.setTeams(teamSet25);
+
+        gameSet2.add(game21);
+        gameSet2.add(game22);
+        gameSet2.add(game23);
+        gameSet2.add(game24);
+        gameSet2.add(game25);
+
+        gameDay2.setGames(gameSet2);
+
+//        gameRepository.save(game21);
+//        gameRepository.save(game22);
+//        gameRepository.save(game23);
+//        gameRepository.save(game24);
+//        gameRepository.save(game25);
+        gameDayRepository.save(gameDay2);
+
+        // Gameday3
+        GameDay gameDay3 = new GameDay();
+        gameDay3.setNumber(3);
+        gameDay3.setDate(dates.get(2));
+
+        Set<Game> gameSet3 = new HashSet<>();
+
+        Game game31 = new Game();
+        Set<Team> teamSet31 = new HashSet<>();
+        teamSet31.add(randomMap.get(2));
+        teamSet31.add(randomMap.get(1));
+        game31.setTeams(teamSet31);
+
+        Game game32 = new Game();
+        Set<Team> teamSet32 = new HashSet<>();
+        teamSet32.add(randomMap.get(3));
+        teamSet32.add(randomMap.get(9));
+        game32.setTeams(teamSet32);
+
+        Game game33 = new Game();
+        Set<Team> teamSet33 = new HashSet<>();
+        teamSet33.add(randomMap.get(4));
+        teamSet33.add(randomMap.get(8));
+        game33.setTeams(teamSet33);
+
+        Game game34= new Game();
+        Set<Team> teamSet34 = new HashSet<>();
+        teamSet34.add(randomMap.get(5));
+        teamSet34.add(randomMap.get(7));
+        game34.setTeams(teamSet34);
+
+        Game game35 = new Game();
+        Set<Team> teamSet35 = new HashSet<>();
+        teamSet35.add(randomMap.get(6));
+        teamSet35.add(randomMap.get(10));
+        game35.setTeams(teamSet35);
+
+        gameSet3.add(game31);
+        gameSet3.add(game32);
+        gameSet3.add(game33);
+        gameSet3.add(game34);
+        gameSet3.add(game35);
+
+        gameDay3.setGames(gameSet3);
+
+//        gameRepository.save(game31);
+//        gameRepository.save(game32);
+//        gameRepository.save(game33);
+//        gameRepository.save(game34);
+//        gameRepository.save(game35);
+        gameDayRepository.save(gameDay3);
     }
 }

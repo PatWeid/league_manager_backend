@@ -49,6 +49,7 @@ public class LeagueController {
 
     @GetMapping("/gameday/{number}")
     public ResponseEntity<GameDay> getGameDay(@PathVariable int number) {
+        logger.info("GET gameday - number: " + number);
         return new ResponseEntity<>(gameDayRepository.findByNumber(number), HttpStatus.OK);
     }
 
