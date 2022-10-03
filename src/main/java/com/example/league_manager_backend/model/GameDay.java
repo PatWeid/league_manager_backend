@@ -21,7 +21,7 @@ public class GameDay {
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 //    @JoinColumn(name = "tutorial_id")
 //    @Size(max = 2)
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Game> games;
 
     public GameDay() {

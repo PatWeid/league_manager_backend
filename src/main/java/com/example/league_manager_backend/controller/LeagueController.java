@@ -52,6 +52,13 @@ public class LeagueController {
         return new ResponseEntity<>(gameDayRepository.findByNumber(number), HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteLeague() {
+        logger.info("DELETE league");
+        gameDayRepository.deleteAll();
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 
     @PostMapping("/create")
     public ResponseEntity createLeague(@RequestBody Map<String, Object> data) {
@@ -70,7 +77,7 @@ public class LeagueController {
             ids.add(i);
         }
 
-        int gameDays = 18;
+        int gameDays = 9;
         dateList.clear();
         Long firstDate = 1664575200000L;
 
