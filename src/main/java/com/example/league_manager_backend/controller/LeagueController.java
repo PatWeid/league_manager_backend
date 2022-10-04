@@ -4,6 +4,7 @@ import com.example.league_manager_backend.model.Game;
 import com.example.league_manager_backend.model.GameDay;
 import com.example.league_manager_backend.model.LeagueData;
 import com.example.league_manager_backend.model.Team;
+import com.example.league_manager_backend.payload.response.MessageResponse;
 import com.example.league_manager_backend.repository.GameDayRepository;
 import com.example.league_manager_backend.security.services.LeagueCreator;
 import org.slf4j.Logger;
@@ -55,41 +56,72 @@ public class LeagueController {
 
     @DeleteMapping("/delete")
     public ResponseEntity deleteLeague() {
+        //nothing to delete
+        if (gameDayRepository.findAll().isEmpty()) {
+            logger.info("ERROR DELETE league - There is no League to delete");
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("There is no League to delete"));
+        }
         logger.info("DELETE league");
-        gameDayRepository.deleteAll();
+        try {
+            gameDayRepository.deleteAll();
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+        }
+
         return new ResponseEntity(HttpStatus.OK);
     }
 
 
     @PostMapping("/create")
     public ResponseEntity createLeague(@RequestBody Map<String, Object> data) {
+        // there is already a league
+        if (!gameDayRepository.findAll().isEmpty()) {
+            logger.info("ERROR CREATE new league - there is already one");
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("There is already a league. Delete it first"));
+        }
         List<Integer> ids = (List<Integer>) data.get("ids");
         List<Long> dates = (List<Long>) data.get("dates");
         List<Date> dateList = dates.stream()
                 .map(Date::new)
                 .collect(Collectors.toList());
 
+        // invalid number of teams or dates
+        if (ids.size() != 10 || dateList.size() != 9) {
+            logger.info("ERROR CREATE new league - invalid number of teams or dates");
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Invalid number of teams or dates"));
+        }
+
         // sort
         Collections.sort(dateList);
 
+        logger.info("CREATE new league");
+        logger.info("IDs: " + ids);
+        logger.info("Dates: " + dateList);
+
         //TODO: mit realen daten arbeiten
-        ids.clear();
-        for (int i = 19; i < 29; i++) {
-            ids.add(i);
-        }
-
-        int gameDays = 9;
-        dateList.clear();
-        Long firstDate = 1664575200000L;
-
-        for (int i = 0; i < gameDays; i++) {
-            Date date = new Date(firstDate);
-            dateList.add(date);
-            firstDate = firstDate + 86400000;
-        }
-
-        
-        logger.info("CREATE league - IDs: " + ids + " - Dates: " + dateList);
+//        ids.clear();
+//        for (int i = 19; i < 29; i++) {
+//            ids.add(i);
+//        }
+//
+//        int gameDays = 9;
+//        dateList.clear();
+//        Long firstDate = 1664575200000L;
+//
+//        for (int i = 0; i < gameDays; i++) {
+//            Date date = new Date(firstDate);
+//            dateList.add(date);
+//            firstDate = firstDate + 86400000;
+//        }
+//
+//
+//        logger.info("CREATE league - IDs: " + ids + " - Dates: " + dateList);
         leagueCreator.createLeague(ids, dateList);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

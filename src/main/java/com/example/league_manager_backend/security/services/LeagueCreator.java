@@ -49,15 +49,11 @@ public class LeagueCreator {
             randomMap.put(i, randomTeam);
         }
 
+        //TODO delete
         for (int i = 1; i <= randomMap.size(); i++) {
             System.out.println("i = " + i + " - Team: " + randomMap.get(i).getName());
         }
 
-
-        // set gamedays
-        for (int gameday = 1; gameday <= numberOfTeams; gameday++) {
-
-        }
 
         //gameday 1
         GameDay gameDay1 = new GameDay();
