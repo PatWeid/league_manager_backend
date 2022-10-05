@@ -1,9 +1,12 @@
 package com.example.league_manager_backend;
 
 import com.example.league_manager_backend.controller.AuthController;
+import com.example.league_manager_backend.model.ERole;
+import com.example.league_manager_backend.model.Role;
 import com.example.league_manager_backend.payload.request.SignupRequest;
 import com.example.league_manager_backend.repository.RoleRepository;
 import com.example.league_manager_backend.repository.TeamRepository;
+import com.example.league_manager_backend.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +41,15 @@ public class LeagueManagerBackendApplication {
 
 
     @Bean
-    CommandLineRunner initDataBase(AuthController authController) {
+    CommandLineRunner initDataBase(AuthController authController, UserRepository userRepository, TeamRepository teamRepository) {
+        // safe roles only once - very important!!!
+        if (roleRepository.findAll().isEmpty()) {
+            Role roleUser = new Role(ERole.ROLE_USER);
+            Role roleAdmin = new Role(ERole.ROLE_ADMIN);
+            roleRepository.save(roleUser);
+            roleRepository.save(roleAdmin);
+        }
+
         // prefill DB with user1-user10
         Set<String> role = new HashSet<>();
         role.add("user");
