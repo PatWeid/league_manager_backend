@@ -48,9 +48,6 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
-        // AuthenticationManager asks all authentication providers if credentials are valid
-        // if so the Authentication with the Principal is returned from authentication provider
-        // TODO add authentication provider for password login (prefilled DB)
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 

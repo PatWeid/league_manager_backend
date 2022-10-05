@@ -1,9 +1,6 @@
 package com.example.league_manager_backend.controller;
 
-import com.example.league_manager_backend.model.Game;
 import com.example.league_manager_backend.model.GameDay;
-import com.example.league_manager_backend.model.LeagueData;
-import com.example.league_manager_backend.model.Team;
 import com.example.league_manager_backend.payload.response.MessageResponse;
 import com.example.league_manager_backend.repository.GameDayRepository;
 import com.example.league_manager_backend.security.services.LeagueCreator;
@@ -14,8 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)

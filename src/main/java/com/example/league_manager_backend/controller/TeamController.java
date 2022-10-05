@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,17 +27,19 @@ public class TeamController {
 
     private static final Logger logger = LoggerFactory.getLogger("TeamController.class");
 
-    @GetMapping({ "/user/{id}/team" })
-    public ResponseEntity<Team> getTeamById(@PathVariable(value = "id") Long id) throws Exception {
+    @GetMapping({"/user/{id}/team"})
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<Team> getTeamById(@PathVariable(value = "id") Long id) {
 
         Team team = teamRepository.findByUserId(id);
-        System.out.println("get team: " + team);
+        logger.info("GET team by user ID: " + id + " - Team: " + team);
 
         return new ResponseEntity<>(team, HttpStatus.OK);
     }
 
-    @GetMapping({ "/teams" })
-    public ResponseEntity<List<Team>> getAllTeams() throws Exception {
+    @GetMapping({"/teams"})
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<Team>> getAllTeams() {
 
         List<Team> allTeams = teamRepository.findAll();
         logger.info("GET all teams: " + allTeams);
@@ -44,9 +47,10 @@ public class TeamController {
     }
 
     @PostMapping("/user/{userId}/team")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<Team> createTeam(@PathVariable(value = "userId") Long userId,
                                            @RequestBody Team team) throws Exception {
-        System.out.println("create team");
+        logger.info("CREATE team for user: " + userId);
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new Exception());
 
@@ -57,10 +61,14 @@ public class TeamController {
     }
 
     @PutMapping("/user/{userId}/team")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<Team> updateTeam(@PathVariable(value = "userId") Long userId,
                                            @RequestBody Team team) {
-        System.out.println("update Team" + "userid: " + userId + "team: " + team);
+        logger.info("UPDATE Team for user: " + userId + " - new team: " + team);
         Team oldTeam = teamRepository.findByUserId(userId);
+        if (oldTeam == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         oldTeam.setName(team.getName());
         oldTeam.setDouble1(team.getDouble1());
         oldTeam.setDouble2(team.getDouble2());
@@ -75,10 +83,10 @@ public class TeamController {
     }
 
     @DeleteMapping("user/{userId}/team")
-    public ResponseEntity<Team> deleteTeam(@PathVariable(value = "userId") Long userId) {
-        System.out.println("delete team");
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<?> deleteTeam(@PathVariable(value = "userId") Long userId) {
+        logger.info("DELETE team for user: " + userId);
         teamRepository.deleteByUserId(userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
