@@ -27,12 +27,14 @@ public class LeagueCreator {
     @Autowired
     GameRepository gameRepository;
 
-
+    /**
+     * The game plan will be created according to these instructions:
+     * https://de.wikipedia.org/wiki/Spielplan_(Sport)
+     * Currently, the creation is very hard-coded and inflexible - it works only for 10 teams.
+     * In the future I want to revise the algorithm so that it works with a variable number of teams.
+     */
     public void createLeague(List<Integer> ids, List<Date> dates) {
-        logger.info("CREATE League");
         List<Team> teams = new ArrayList<>();
-
-
         for(int id : ids) {
             teams.add(teamRepository.findByUserId(id));
         }
@@ -48,12 +50,6 @@ public class LeagueCreator {
             teams.remove(randomIndex);
             randomMap.put(i, randomTeam);
         }
-
-        //TODO delete
-        for (int i = 1; i <= randomMap.size(); i++) {
-            System.out.println("i = " + i + " - Team: " + randomMap.get(i).getName());
-        }
-
 
         //gameday 1
         GameDay gameDay1 = new GameDay();
@@ -100,11 +96,6 @@ public class LeagueCreator {
 
         gameDay1.setGames(gameSet1);
 
-//        gameRepository.save(game1);
-//        gameRepository.save(game2);
-//        gameRepository.save(game3);
-//        gameRepository.save(game4);
-//        gameRepository.save(game5);
         gameDayRepository.save(gameDay1);
 
 

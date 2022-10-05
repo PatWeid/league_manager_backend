@@ -1,10 +1,9 @@
 package com.example.league_manager_backend;
 
 import com.example.league_manager_backend.controller.AuthController;
-import com.example.league_manager_backend.controller.TeamController;
+import com.example.league_manager_backend.payload.request.SignupRequest;
 import com.example.league_manager_backend.repository.RoleRepository;
 import com.example.league_manager_backend.repository.TeamRepository;
-import com.example.league_manager_backend.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class LeagueManagerBackendApplication {
@@ -37,39 +38,38 @@ public class LeagueManagerBackendApplication {
 
 
     @Bean
-    CommandLineRunner initDataBase(UserRepository userRepository, AuthController authController, TeamController teamController) {
-//        Set<String> role = new HashSet<>();
-//        role.add("user");
-//        SignupRequest signupRequest = new SignupRequest();
-//        signupRequest.setUsername("user100");
-//        signupRequest.setEmail("user100@web.de");
-//        signupRequest.setPassword("user100");
-//        signupRequest.setRole(role);
-//        authController.registerUser(signupRequest);
+    CommandLineRunner initDataBase(AuthController authController) {
+        // prefill DB with user1-user10
+        Set<String> role = new HashSet<>();
+        role.add("user");
+        SignupRequest signupRequest = new SignupRequest();
+        for (int i = 1; i < 11; i++) {
+            signupRequest.setUsername("user" + i);
+            signupRequest.setEmail("user" + i + "@tabletennis.com");
+            signupRequest.setPassword("user" + i);
+            signupRequest.setRole(role);
+            authController.registerUser(signupRequest);
+        }
+        logger.info("Prefill Database with user1-user10");
 
+        // prefill DB with administrator
+        role.add("admin");
+        signupRequest.setUsername("administrator");
+        signupRequest.setEmail("administrator@tabletennis.com");
+        signupRequest.setPassword("administrator");
+        signupRequest.setRole(role);
+        authController.registerUser(signupRequest);
+        logger.info("Prefill Database with administrator");
 
+        // prefill DB with admin
+        signupRequest.setUsername("admin");
+        signupRequest.setEmail("admin@tabletennis.com");
+        signupRequest.setPassword("admin");
+        signupRequest.setRole(role);
+        authController.registerUser(signupRequest);
+        logger.info("Prefill Database with admin");
 
-
-//        User user = userRepository.findByUsername("user100").get();
-//        System.out.println("--------user: " + user.getId());
-//        Team team = new Team(user, "user10-team", "10d1", "10d2", "10d3", "10p1", "10p2", "10p3", "10p4", "10p5", "10p6");
-//        try {
-//            teamController.createTeam(user.getId(), team);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//        teamRepository.save(team);
-//        for (int i = 1; i < 11; i++) {
-//            signupRequest.setUsername("user" + i);
-//            signupRequest.setEmail("user" + i + "@tabletennis.com");
-//            signupRequest.setPassword("user" + i);
-//            signupRequest.setRole(role);
-//            authController.registerUser(signupRequest);
-//        }
         return args -> {
-//            logger.info("prefill DB: " + userRepository.save(new User("user1", "user1@tabletennis.com", "$2a$10$HRSff62HfqujZEtF6peuIe/96qx69TAR6gVs3AAumtd4MA/90kMAa")));
-
-
         };
     }
 

@@ -1,7 +1,6 @@
 package com.example.league_manager_backend.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
@@ -17,7 +16,7 @@ public class GameDay {
 
     private Date date;
 
-    // TODO: check cascade and join column
+
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 //    @JoinColumn(name = "tutorial_id")
 //    @Size(max = 2)
