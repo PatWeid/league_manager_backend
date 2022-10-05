@@ -14,13 +14,17 @@ public class Game {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Team> teams;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Match> matches;
+
     public Game() {
 
     }
 
-    public Game(Long id, Set<Team> teams) {
+    public Game(Long id, Set<Team> teams, Set<Match> matches) {
         this.id = id;
         this.teams = teams;
+        this.matches = matches;
     }
 
     public Long getId() {
@@ -39,17 +43,25 @@ public class Game {
         this.teams = teams;
     }
 
+    public Set<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(Set<Match> matches) {
+        this.matches = matches;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
-        return id.equals(game.id) && teams.equals(game.teams);
+        return id.equals(game.id) && Objects.equals(teams, game.teams) && Objects.equals(matches, game.matches);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, teams);
+        return Objects.hash(id, teams, matches);
     }
 
     @Override
@@ -57,6 +69,7 @@ public class Game {
         return "Game{" +
                 "id=" + id +
                 ", teams=" + teams +
+                ", matches=" + matches +
                 '}';
     }
 }

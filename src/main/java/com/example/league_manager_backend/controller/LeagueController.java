@@ -1,8 +1,10 @@
 package com.example.league_manager_backend.controller;
 
 import com.example.league_manager_backend.model.GameDay;
+import com.example.league_manager_backend.model.Match;
 import com.example.league_manager_backend.payload.response.MessageResponse;
 import com.example.league_manager_backend.repository.GameDayRepository;
+import com.example.league_manager_backend.repository.GameRepository;
 import com.example.league_manager_backend.security.services.LeagueCreator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,11 +30,25 @@ public class LeagueController {
     @Autowired
     private GameDayRepository gameDayRepository;
 
+    @Autowired
+    private GameRepository gameRepository;
+
     @GetMapping("/gameday/{number}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<GameDay> getGameDay(@PathVariable int number) {
         logger.info("GET gameday - number: " + number);
         return new ResponseEntity<>(gameDayRepository.findByNumber(number), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/{gameId}/matches")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<List<Match>> getMatchesByGame(@PathVariable long gameId) {
+        logger.info("GET matches by game - gameID: " + gameId);
+        List<Match> matchesByGame = new ArrayList<>(gameRepository.findById(gameId).get().getMatches());
+        matchesByGame.sort(Comparator.comparing(Match::getNumber));
+        logger.info("MatchesByGameID: " + matchesByGame);
+        return new ResponseEntity<>(matchesByGame, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

@@ -63,30 +63,35 @@ public class LeagueCreator {
         teamSet1.add(randomMap.get(1));
         teamSet1.add(randomMap.get(9));
         game1.setTeams(teamSet1);
+        game1.setMatches(MatchCreator.createMatches(teamSet1));
 
         Game game2 = new Game();
         Set<Team> teamSet2 = new HashSet<>();
         teamSet2.add(randomMap.get(2));
         teamSet2.add(randomMap.get(8));
         game2.setTeams(teamSet2);
+        game2.setMatches(MatchCreator.createMatches(teamSet2));
 
         Game game3 = new Game();
         Set<Team> teamSet3 = new HashSet<>();
         teamSet3.add(randomMap.get(3));
         teamSet3.add(randomMap.get(7));
         game3.setTeams(teamSet3);
+        game3.setMatches(MatchCreator.createMatches(teamSet3));
 
         Game game4= new Game();
         Set<Team> teamSet4 = new HashSet<>();
         teamSet4.add(randomMap.get(4));
         teamSet4.add(randomMap.get(6));
         game4.setTeams(teamSet4);
+        game4.setMatches(MatchCreator.createMatches(teamSet4));
 
         Game game5 = new Game();
         Set<Team> teamSet5 = new HashSet<>();
         teamSet5.add(randomMap.get(5));
         teamSet5.add(randomMap.get(10));
         game5.setTeams(teamSet5);
+        game5.setMatches(MatchCreator.createMatches(teamSet5));
 
         gameSet1.add(game1);
         gameSet1.add(game2);
@@ -111,30 +116,35 @@ public class LeagueCreator {
         teamSet21.add(randomMap.get(10));
         teamSet21.add(randomMap.get(1));
         game21.setTeams(teamSet21);
+        game21.setMatches(MatchCreator.createMatches(teamSet21));
 
         Game game22 = new Game();
         Set<Team> teamSet22 = new HashSet<>();
         teamSet22.add(randomMap.get(2));
         teamSet22.add(randomMap.get(9));
         game22.setTeams(teamSet22);
+        game22.setMatches(MatchCreator.createMatches(teamSet22));
 
         Game game23 = new Game();
         Set<Team> teamSet23 = new HashSet<>();
         teamSet23.add(randomMap.get(3));
         teamSet23.add(randomMap.get(8));
         game23.setTeams(teamSet23);
+        game23.setMatches(MatchCreator.createMatches(teamSet23));
 
         Game game24= new Game();
         Set<Team> teamSet24 = new HashSet<>();
         teamSet24.add(randomMap.get(4));
         teamSet24.add(randomMap.get(7));
         game24.setTeams(teamSet24);
+        game24.setMatches(MatchCreator.createMatches(teamSet24));
 
         Game game25 = new Game();
         Set<Team> teamSet25 = new HashSet<>();
         teamSet25.add(randomMap.get(5));
         teamSet25.add(randomMap.get(6));
         game25.setTeams(teamSet25);
+        game25.setMatches(MatchCreator.createMatches(teamSet25));
 
         gameSet2.add(game21);
         gameSet2.add(game22);
@@ -158,30 +168,35 @@ public class LeagueCreator {
         teamSet31.add(randomMap.get(2));
         teamSet31.add(randomMap.get(1));
         game31.setTeams(teamSet31);
+        game31.setMatches(MatchCreator.createMatches(teamSet31));
 
         Game game32 = new Game();
         Set<Team> teamSet32 = new HashSet<>();
         teamSet32.add(randomMap.get(3));
         teamSet32.add(randomMap.get(9));
         game32.setTeams(teamSet32);
+        game32.setMatches(MatchCreator.createMatches(teamSet32));
 
         Game game33 = new Game();
         Set<Team> teamSet33 = new HashSet<>();
         teamSet33.add(randomMap.get(4));
         teamSet33.add(randomMap.get(8));
         game33.setTeams(teamSet33);
+        game33.setMatches(MatchCreator.createMatches(teamSet33));
 
         Game game34= new Game();
         Set<Team> teamSet34 = new HashSet<>();
         teamSet34.add(randomMap.get(5));
         teamSet34.add(randomMap.get(7));
         game34.setTeams(teamSet34);
+        game34.setMatches(MatchCreator.createMatches(teamSet34));
 
         Game game35 = new Game();
         Set<Team> teamSet35 = new HashSet<>();
         teamSet35.add(randomMap.get(6));
         teamSet35.add(randomMap.get(10));
         game35.setTeams(teamSet35);
+        game35.setMatches(MatchCreator.createMatches(teamSet35));
 
         gameSet3.add(game31);
         gameSet3.add(game32);
@@ -205,30 +220,35 @@ public class LeagueCreator {
         teamSet41.add(randomMap.get(2));
         teamSet41.add(randomMap.get(10));
         game41.setTeams(teamSet41);
+        game41.setMatches(MatchCreator.createMatches(teamSet41));
 
         Game game42 = new Game();
         Set<Team> teamSet42 = new HashSet<>();
         teamSet42.add(randomMap.get(3));
         teamSet42.add(randomMap.get(1));
         game42.setTeams(teamSet42);
+        game42.setMatches(MatchCreator.createMatches(teamSet42));
 
         Game game43 = new Game();
         Set<Team> teamSet43 = new HashSet<>();
         teamSet43.add(randomMap.get(4));
         teamSet43.add(randomMap.get(9));
         game43.setTeams(teamSet43);
+        game43.setMatches(MatchCreator.createMatches(teamSet43));
 
         Game game44= new Game();
         Set<Team> teamSet44 = new HashSet<>();
         teamSet44.add(randomMap.get(5));
         teamSet44.add(randomMap.get(8));
         game44.setTeams(teamSet44);
+        game44.setMatches(MatchCreator.createMatches(teamSet44));
 
         Game game45 = new Game();
         Set<Team> teamSet45 = new HashSet<>();
         teamSet45.add(randomMap.get(6));
         teamSet45.add(randomMap.get(7));
         game45.setTeams(teamSet45);
+        game45.setMatches(MatchCreator.createMatches(teamSet45));
 
         gameSet4.add(game41);
         gameSet4.add(game42);
@@ -252,30 +272,35 @@ public class LeagueCreator {
         teamSet51.add(randomMap.get(2));
         teamSet51.add(randomMap.get(3));
         game51.setTeams(teamSet51);
+        game51.setMatches(MatchCreator.createMatches(teamSet51));
 
         Game game52 = new Game();
         Set<Team> teamSet52 = new HashSet<>();
         teamSet52.add(randomMap.get(4));
         teamSet52.add(randomMap.get(1));
         game52.setTeams(teamSet52);
+        game52.setMatches(MatchCreator.createMatches(teamSet52));
 
         Game game53 = new Game();
         Set<Team> teamSet53 = new HashSet<>();
         teamSet53.add(randomMap.get(5));
         teamSet53.add(randomMap.get(9));
         game53.setTeams(teamSet53);
+        game53.setMatches(MatchCreator.createMatches(teamSet53));
 
         Game game54= new Game();
         Set<Team> teamSet54 = new HashSet<>();
         teamSet54.add(randomMap.get(6));
         teamSet54.add(randomMap.get(8));
         game54.setTeams(teamSet54);
+        game54.setMatches(MatchCreator.createMatches(teamSet54));
 
         Game game55 = new Game();
         Set<Team> teamSet55 = new HashSet<>();
         teamSet55.add(randomMap.get(7));
         teamSet55.add(randomMap.get(10));
         game55.setTeams(teamSet55);
+        game55.setMatches(MatchCreator.createMatches(teamSet55));
 
         gameSet5.add(game51);
         gameSet5.add(game52);
@@ -299,30 +324,35 @@ public class LeagueCreator {
         teamSet61.add(randomMap.get(10));
         teamSet61.add(randomMap.get(3));
         game61.setTeams(teamSet61);
+        game61.setMatches(MatchCreator.createMatches(teamSet61));
 
         Game game62 = new Game();
         Set<Team> teamSet62 = new HashSet<>();
         teamSet62.add(randomMap.get(4));
         teamSet62.add(randomMap.get(2));
         game62.setTeams(teamSet62);
+        game62.setMatches(MatchCreator.createMatches(teamSet62));
 
         Game game63 = new Game();
         Set<Team> teamSet63 = new HashSet<>();
         teamSet63.add(randomMap.get(5));
         teamSet63.add(randomMap.get(1));
         game63.setTeams(teamSet63);
+        game63.setMatches(MatchCreator.createMatches(teamSet63));
 
         Game game64= new Game();
         Set<Team> teamSet64 = new HashSet<>();
         teamSet64.add(randomMap.get(6));
         teamSet64.add(randomMap.get(9));
         game64.setTeams(teamSet64);
+        game64.setMatches(MatchCreator.createMatches(teamSet64));
 
         Game game65 = new Game();
         Set<Team> teamSet65 = new HashSet<>();
         teamSet65.add(randomMap.get(7));
         teamSet65.add(randomMap.get(8));
         game65.setTeams(teamSet65);
+        game65.setMatches(MatchCreator.createMatches(teamSet65));
 
         gameSet6.add(game61);
         gameSet6.add(game62);
@@ -346,30 +376,39 @@ public class LeagueCreator {
         teamSet71.add(randomMap.get(4));
         teamSet71.add(randomMap.get(3));
         game71.setTeams(teamSet71);
+        game71.setMatches(MatchCreator.createMatches(teamSet71));
 
         Game game72 = new Game();
         Set<Team> teamSet72 = new HashSet<>();
         teamSet72.add(randomMap.get(5));
         teamSet72.add(randomMap.get(2));
         game72.setTeams(teamSet72);
+        game72.setMatches(MatchCreator.createMatches(teamSet72));
+
 
         Game game73 = new Game();
         Set<Team> teamSet73 = new HashSet<>();
         teamSet73.add(randomMap.get(6));
         teamSet73.add(randomMap.get(1));
         game73.setTeams(teamSet73);
+        game73.setMatches(MatchCreator.createMatches(teamSet73));
+
 
         Game game74= new Game();
         Set<Team> teamSet74 = new HashSet<>();
         teamSet74.add(randomMap.get(7));
         teamSet74.add(randomMap.get(9));
         game74.setTeams(teamSet74);
+        game74.setMatches(MatchCreator.createMatches(teamSet74));
+
 
         Game game75 = new Game();
         Set<Team> teamSet75 = new HashSet<>();
         teamSet75.add(randomMap.get(10));
         teamSet75.add(randomMap.get(8));
         game75.setTeams(teamSet75);
+        game75.setMatches(MatchCreator.createMatches(teamSet75));
+
 
         gameSet7.add(game71);
         gameSet7.add(game72);
@@ -393,30 +432,36 @@ public class LeagueCreator {
         teamSet81.add(randomMap.get(4));
         teamSet81.add(randomMap.get(10));
         game81.setTeams(teamSet81);
+        game81.setMatches(MatchCreator.createMatches(teamSet81));
+
 
         Game game82 = new Game();
         Set<Team> teamSet82 = new HashSet<>();
         teamSet82.add(randomMap.get(5));
         teamSet82.add(randomMap.get(3));
         game82.setTeams(teamSet82);
+        game82.setMatches(MatchCreator.createMatches(teamSet82));
 
         Game game83 = new Game();
         Set<Team> teamSet83 = new HashSet<>();
         teamSet83.add(randomMap.get(6));
         teamSet83.add(randomMap.get(2));
         game83.setTeams(teamSet83);
+        game83.setMatches(MatchCreator.createMatches(teamSet83));
 
         Game game84= new Game();
         Set<Team> teamSet84 = new HashSet<>();
         teamSet84.add(randomMap.get(7));
         teamSet84.add(randomMap.get(1));
         game84.setTeams(teamSet84);
+        game84.setMatches(MatchCreator.createMatches(teamSet84));
 
         Game game85 = new Game();
         Set<Team> teamSet85 = new HashSet<>();
         teamSet85.add(randomMap.get(9));
         teamSet85.add(randomMap.get(8));
         game85.setTeams(teamSet85);
+        game85.setMatches(MatchCreator.createMatches(teamSet85));
 
         gameSet8.add(game81);
         gameSet8.add(game82);
@@ -440,30 +485,35 @@ public class LeagueCreator {
         teamSet91.add(randomMap.get(4));
         teamSet91.add(randomMap.get(5));
         game91.setTeams(teamSet91);
+        game91.setMatches(MatchCreator.createMatches(teamSet91));
 
         Game game92 = new Game();
         Set<Team> teamSet92 = new HashSet<>();
         teamSet92.add(randomMap.get(6));
         teamSet92.add(randomMap.get(3));
         game92.setTeams(teamSet92);
+        game92.setMatches(MatchCreator.createMatches(teamSet92));
 
         Game game93 = new Game();
         Set<Team> teamSet93 = new HashSet<>();
         teamSet93.add(randomMap.get(7));
         teamSet93.add(randomMap.get(2));
         game93.setTeams(teamSet93);
+        game93.setMatches(MatchCreator.createMatches(teamSet93));
 
         Game game94= new Game();
         Set<Team> teamSet94 = new HashSet<>();
         teamSet94.add(randomMap.get(8));
         teamSet94.add(randomMap.get(1));
         game94.setTeams(teamSet94);
+        game94.setMatches(MatchCreator.createMatches(teamSet94));
 
         Game game95 = new Game();
         Set<Team> teamSet95 = new HashSet<>();
         teamSet95.add(randomMap.get(9));
         teamSet95.add(randomMap.get(10));
         game95.setTeams(teamSet95);
+        game95.setMatches(MatchCreator.createMatches(teamSet95));
 
         gameSet9.add(game91);
         gameSet9.add(game92);
